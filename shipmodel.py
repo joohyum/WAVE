@@ -64,13 +64,13 @@ class shipmodel:
         if method == 'Euler':
             s_states = states + dt * self.WAMV_CNU(states, control)
         elif method == 'RK45':
-            k1 =  self.WAMV_CNU(states, control) * dt
-            k2 =  self.WAMV_CNU(states+0.5*k1, control) * dt
-            k3 =  self.WAMV_CNU(states+0.5*k2, control) * dt
-            k4 =  self.WAMV_CNU(states+k3, control) * dt
-            k = ( k1 + 2*k2 + 2*k3 + k4 )/ 6
+            k1 = self.WAMV_CNU(states, control) * dt
+            k2 = self.WAMV_CNU(states+0.5*k1, control) * dt
+            k3 = self.WAMV_CNU(states+0.5*k2, control) * dt
+            k4 = self.WAMV_CNU(states+k3, control) * dt
+            k = (k1 + 2*k2 + 2*k3 + k4) / 6
             s_states = states + k
-        else :
+        else:
             raise ValueError("Available method input velue is Euler or RK45 ")
 
         return s_states

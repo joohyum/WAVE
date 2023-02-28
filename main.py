@@ -1,4 +1,6 @@
 # Read the waypoint from informed RRT*
+from LidarSimModel import LidarSimmodel
+from EnvModel import EnvModel
 import waypoints as wpt
 import sys
 from shipmodel import *
@@ -174,9 +176,17 @@ class custom_functions:
 
          return xdot
 
-    #def shipModel:
+def draw_shipmodel(x, y, u, v, chi):
+    ownship = shipmodel(x, y, psi+np.arctan2(v, u))
+    plt.plot(ownship.vehx, ownship.vehy, color='b')
+    plt.plot(path_x, path_y, 'b--')
+    plt.draw()
 
+# def draw_lidar(x, y, psi):
 
+Lida = LidarSimmodel()
+Env = EnvModel(env_config_path='./config/toy1/yaml')
+all_obstacle_segments, connected_components = Env.update_obstacles()
 
 # Determine Start/Goal point
 #point(list) -> point = [x, y]
@@ -394,10 +404,12 @@ for i in range(1,N+2):
         plt.title('LOS + PID control')
         plt.plot()
 
-        ownship = shipmodel(x[3], x[4], x[5]+np.arctan2(x[1],x[0]))
-        plt.plot(ownship.vehx, ownship.vehy, color='b')
-        plt.plot(path_x, path_y, 'b--')
-        plt.draw()
+        draw_shipmodel(x[3], x[4], x[0], x[1], x[5])
+        Lida.lidar_sim(x[3][0], x[4][0], x[5][0], all_obstacle_segments)
+        plt.plot(Lida.laser_data_xy)
+        # liadarM1 = lia.LidarSimmodel()
+        # liadarM1.lidar_sim(x[3], x[4], x[5], [[0, 0, 20, 20], [100, 120, 150, 150]])
+
         plt.pause(0.001)
         #s = plt.text('Time = %8.2f', t)
         # Time_display = plt.text(10, 200, s, fontsize=10)
