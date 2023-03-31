@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 class shipmodel:
 
-    def __init__(self, x, y, chi):
+    def __init__(self, x, y, psi):
         # ship shape
         self.veh_info_L = 4.88  # USV_Length
         self.veh_info_B = 2.44  # Usv_beam
@@ -32,8 +32,8 @@ class shipmodel:
         self.xyr = np.sqrt(np.power(self.x_tmp, 2)+np.power(self.y_tmp, 2))
         self.theta = np.arctan2(self.y_tmp, self.x_tmp)
 
-        self.vehx = np.cos(self.theta+chi)*self.xyr+x
-        self.vehy = np.sin(self.theta+chi)*self.xyr+y
+        self.vehx = np.cos(self.theta+psi)*self.xyr+x
+        self.vehy = np.sin(self.theta+psi)*self.xyr+y
         # self.theta = np.linspace(0,360,361)/180*np.pi
 
 

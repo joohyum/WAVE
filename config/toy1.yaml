@@ -10,8 +10,8 @@ obstacles:
  - # wall 1
   centroid_x: 150 # centroid of the obstacle
   centroid_y: 150 # centroid of the obstacle
-  dx: 10 # width of the obstacle
-  dy: 20 # height of the obstacle
+  dx: 30 # width of the obstacle
+  dy: 120 # height of the obstacle
   orientation: 0 # angle of the obstacle
   velocity_x: 0 # velocity of the obstacle
   velocity_y: 0 # velocity of the obstacle
@@ -19,10 +19,10 @@ obstacles:
   acc_y: 0 # acceleration of the obstacle
 
  - # wall 2
-  centroid_x: 220 # centroid of the obstacle
-  centroid_y: 100 # centroid of the obstacle
-  dx: 10 # width of the obstacle
-  dy: 18 # height of the obstacle
+  centroid_x: 300 # centroid of the obstacle
+  centroid_y: 200 # centroid of the obstacle
+  dx: 30 # width of the obstacle
+  dy: 120 # height of the obstacle
   orientation: 0 # angle of the obstacle
   velocity_x: 0 # velocity of the obstacle
   velocity_y: 0 # velocity of the obstacle
